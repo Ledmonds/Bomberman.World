@@ -1,20 +1,17 @@
-# Contains notable featuers to be added into project.
+# Contains notable features to be added into project.
 
 ## Easy Addition
-Document tile mapping system and valid block types
-Tile.js - Need to store sprite for that tile locally within the class.
-Tile.js - SetVector2D, needs validation to check that it is within game bounds, or is atleast valid coords.
-Document .tm extension.
-Document out classes.
-X and Y vectors are still flipped.
-Create hash map from .tm files to actual types.
-
+	• Document custom .tm extension. Look into some standards around tile map file layouts.
+	• Document out classes.
+	• Create hash map from .tm files to actual types.
+	• Remove p5.js library dependancy upon release, should just link to online p5js repo.
 
 ## Medium Addition
-Validation for tilemapping, can handle erronous .tm files.
-Allow manual modification of tile types, removing etc in real time.
-	Update block types.
-Optimise mouse movement code, it's horribly slow.
-Optimise drawing code, it runs horrible, need to find a way to bring continious calculations down.
+	• Add validation for .tm files, such that they can handle erroneous .tm files.
+	• Mouse tracking needs some styling, maybe a dotted or flashing line etc. Kind of sucks at the moment. You could map alpha values so that is only starts to appear once at the edge of game area and gets stronger the further away the mouse is.
 
 ## Hard Addition
+	• Implement some optimisation for the on screen tile drawing.
+	• Implement a proper tile decay system, as this will be needed with more than just brick type decaying; used with bomb animations, death animations etc.
+	• Implement delta time to run animation and board update clocks.
+	• Implement some custom animations with the MouseHighlightOverlay.

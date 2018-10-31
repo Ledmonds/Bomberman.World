@@ -1,16 +1,12 @@
 class Vector2D
 {
-	constructor(_x,_y)
+	constructor(_X,_Y)
 	{
-		this.x = _x;
-		this.y = _y;
+		this.X = _X;
+		this.Y = _Y;
 	}
 
 	//Gettors
-	GetX() {return this.x;}
-	GetY() {return this.y;}
-
-	//Settors
-	SetX(_x) {this.x = _x;}
-	SetY(_y) {this.y = _y;}
+	GetX() {return this.X;}
+	GetY() {return this.Y;}
 };

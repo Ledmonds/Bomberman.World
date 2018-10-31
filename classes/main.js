@@ -1,12 +1,12 @@
 function preload()
 {
-	board = new Board();
+	Board = new Board();
 }
 
 function setup()
 {
 	createCanvas(window.innerWidth, window.innerHeight);
-	board.SetupBoard();
+	Board.SetupBoard();
 }
 
 function windowResized()
@@ -14,8 +14,14 @@ function windowResized()
 	resizeCanvas(window.innerWidth,window.innerHeight);
 }
 
-function mouseMoved() {
-	board.UpdateMouseVector();
+function mouseMoved()
+{
+	Board.UpdateMouseVector();
+}
+
+function mouseClicked()
+{
+	Board.EditTile();
 }
 
 
@@ -23,11 +29,12 @@ function mouseMoved() {
 function draw() { 
 	clear();
 	
-	
 	translate(window.innerWidth/2,window.innerHeight/2);
-	
-	board.DrawGameArea();
-	board.DrawMouseHighlight();
+
+	cursor(HAND)
+	Board.DrawGameArea();
+	Board.DrawMouseTracer();
+	Board.DrawMouseHighlight();
 	
 }
 

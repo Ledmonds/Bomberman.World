@@ -9,5 +9,5 @@ wgggggggggggggw
 wgwgwgwbwbwgwgw
 wgggggggggggggw
 wgwgwgwbwbwgwgw
-wgggwwwwbbbgggw
+wggggggbbbbgggw
 wwwwwwwwwwwwwww

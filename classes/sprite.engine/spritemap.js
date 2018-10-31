@@ -1,52 +1,54 @@
 class Spritemap
 {
-	constructor(_spritesheet_filepath,_sprite_size, _sprite_offset)
+	constructor(_SpritesheetFilepath, _SpriteSize, _SpriteOffset)
 	{	
-		this.spritemap_file = loadImage(_spritesheet_filepath)
-		this.sprite_size = _sprite_size;
-		this.sprite_offset = _sprite_offset;
+		this.SpritemapImage = loadImage(_SpritesheetFilepath)
+		this.SpriteSize = _SpriteSize;
+		this.SpriteOffset = _SpriteOffset;
 
-		this.sprite_hashmap = this.SetupSpriteHashmap();
+		this.SpriteHashmap = {};
 	}
 
 
 	//Setup
 	SetupSpriteHashmap() //Defines the types of hashes within the spritemap.
 	{
-		var hashmap = {};
-		
-		hashmap["Wall"] = new Vector2D(1,0);
-		hashmap["Brick"] = new Vector2D(2,0);
-		hashmap["Grass"] = new Vector2D(3,0);
-		hashmap["ShadowGrass"] = new Vector2D(5,0);
+		//General Environment Blocks
+		this.SpriteHashmap["Wall"] = this.GenerateSubSprite(new Vector2D(1,0));
+		this.SpriteHashmap["Grass"] = this.GenerateSubSprite(new Vector2D(3,0));
+		this.SpriteHashmap["ShadowGrass"] = this.GenerateSubSprite(new Vector2D(5,0));
+		this.SpriteHashmap["Brick"] = this.GenerateSubSprite(new Vector2D(2,0));		
 
-		return hashmap;
+		//Decaying Brick States
+		this.SpriteHashmap["DecayingBrick0"] = this.GenerateSubSprite(new Vector2D(0,6));
+		this.SpriteHashmap["DecayingBrick1"] = this.GenerateSubSprite(new Vector2D(1,6));
+		this.SpriteHashmap["DecayingBrick2"] = this.GenerateSubSprite(new Vector2D(2,6));
+		this.SpriteHashmap["DecayingBrick3"] = this.GenerateSubSprite(new Vector2D(3,6));
+		this.SpriteHashmap["DecayingBrick4"] = this.GenerateSubSprite(new Vector2D(4,6));
+		this.SpriteHashmap["DecayingBrick5"] = this.GenerateSubSprite(new Vector2D(5,6));
 	}
-
+	GenerateSubSprite(_SubSpriteVector)
+	{
+		return this.SpritemapImage.get
+		(
+			_SubSpriteVector.GetX()*this.SpriteSize+(this.SpriteOffset*_SubSpriteVector.GetX()),
+			_SubSpriteVector.GetY()*this.SpriteSize+(this.SpriteOffset*_SubSpriteVector.GetY()),
+			this.SpriteSize,
+			this.SpriteSize
+		);	
+	}
 
 	//Gettors
-	GetSpriteHashmapVector(_tile_type)
+	GetSprite(_TileType)
 	{
-		return this.sprite_hashmap[_tile_type];
-	}
-	GetSubSprite(_tile_type)
-	{
-		var sub_sprite_vector2D = this.GetSpriteHashmapVector(_tile_type);
-
-		return this.spritemap_file.get
-		(
-			sub_sprite_vector2D.GetX()*this.sprite_size+(this.sprite_offset*sub_sprite_vector2D.GetX()),
-			sub_sprite_vector2D.GetY()*this.sprite_size+(this.sprite_offset*sub_sprite_vector2D.GetY()),
-			this.sprite_size,
-			this.sprite_size
-		);
+		return this.SpriteHashmap[_TileType];
 	}
 	GetSpriteSize()
 	{
-		return this.sprite_size;
+		return this.SpriteSize;
 	}
 	GetSpriteOffsetVector()
 	{
-		return this.sprite_offset;
+		return this.SpriteOffset;
 	}
 };

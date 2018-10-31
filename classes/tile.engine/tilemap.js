@@ -1,10 +1,10 @@
 class Tilemap
 {
 	//Constructor
-	constructor(_tilemap_filepath)
+	constructor(_TilemapFilepath)
 	{
-		this.tilemap_file = loadStrings(_tilemap_filepath);
-		this.valid_tiles = ['Wall','Grass','Brick']; //Chacter array containing all current valid tile types.
+		this.TilemapFile = loadStrings(_TilemapFilepath);
+		this.ValidTiles = ['Wall','Grass','Brick']; //Chacter array containing all current valid tile types.
 	}
 
 
@@ -12,20 +12,20 @@ class Tilemap
 	GetTile(_tile_vector)
 	{
 		if (!this.IsValidTileVector(_tile_vector)) return null;
-		else if (this.tilemap_file[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'w') return "Wall";
-		else if (this.tilemap_file[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'g') return "Grass";
-		else if (this.tilemap_file[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'b') return "Brick";
+		else if (this.TilemapFile[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'w') return "Wall";
+		else if (this.TilemapFile[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'g') return "Grass";
+		else if (this.TilemapFile[_tile_vector.GetX()][_tile_vector.GetY()].toLowerCase() == 'b') return "Brick";
 	}
 	GetTilemapVector()
 	{
-		return new Vector2D(this.tilemap_file[0].length,this.tilemap_file.length);
+		return new Vector2D(this.TilemapFile[0].length,this.TilemapFile.length);
 	}
 	GetSpriteSize()
 	{
 		return this.SpriteSize;
 	}
 	GetValidTiles(){
-		return this.valid_tiles;
+		return this.ValidTiles;
 	}
 	GetSprite(_SpriteType)
 	{

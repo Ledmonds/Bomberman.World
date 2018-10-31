@@ -1,29 +1,56 @@
-class Tile {
-	constructor(_tile_vector2D,_tile_type)
+class Tile
+{
+	//Constructor
+	constructor(_TileVector,_TileType)
 	{
-		this.tile_vector2D = new Vector2D(_tile_vector2D[0],_tile_vector2D[1]); //Needs validation.
-		this.tile_type = _tile_type;
+		this.TileVector = new Vector2D(_TileVector[0],_TileVector[1]); //Needs validation.
+		this.TileType = _TileType;
+		
+		this.IsDecaying = false;
+		this.DecayCounter = 0;
 	}
 
 
 	//Gettors
 	GetTileType()
 	{
-		return this.tile_type;
+		return this.TileType;
 	}
-	Gettile_vector2D()
+	GetTileVector()
 	{
-		return this.tile_vector2D;
+		return this.TileVector;
+	}
+	GetIsDecaying()
+	{
+		return this.IsDecaying;
+	}
+	GetDecayCounter() {
+		return this.DecayCounter;
 	}
 
 
 	//Settors
-	SetTileType(_tile_type)
+	SetTileType(_TileType)
 	{
-		this.tile_type = _tile_type;
+		this.TileType = _TileType;
+		this.IsDecaying = true;
 	}
-	Settile_vector2D(_tile_vector2D) //Needs Validation.
+	SetTileVector(_TileVector)
 	{
-		this.tile_vector2D = _tile_vector2D;
+		this.TileVector = _TileVector;
+	}
+
+	//Modifiers
+	DecayTile()
+	{
+		if (this.DecayCounter >= 5)
+		{
+			this.IsDecaying = false;
+			this.DecayCounter = 0;
+		}
+		else
+		{
+			++this.DecayCounter;
+		}
 	}
 };
